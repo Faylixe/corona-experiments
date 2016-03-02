@@ -1,6 +1,9 @@
+----------------------------------------------------
+-- TODO : Document
+-- @author Faylixe
+----------------------------------------------------
 
-
+-- Dependencies import
 local composer = require "composer"
 
-
-local scene = composer.newScene("testscene")
+composer.composer.gotoScene("scene/land/test")

@@ -1,20 +1,22 @@
 ----------------------------------------------------
--- TODO : Document
--- @package model
+-- Grass object defintion.
+-- @package model.land
 -- @author Faylixe
 ----------------------------------------------------
 
 -- Dependencies import
 local class = require "core.30log"
+local StaticGameObject = require "core.StaticGameObject"
 
 -- Package definition
-local GameObject = class("GameObject")
+local Grass = StaticGameObject:extends("Grass")
+local RESOURCE = "resources/assets/grass.png"
 
 -- Default constructor.
 -- @parent Parent display group this object belong to.
-function GameObject:init(parent)
-  self.parent = parent
+function Grass:init(parent)
+  StaticGameObject.super.init(self, parent, RESOURCE)
 end
 
 -- Package export
-return GameObject
+return Grass

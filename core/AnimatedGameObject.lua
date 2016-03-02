@@ -5,16 +5,17 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local class = require "core.30log"
+local class = require "core.30log "
+local GameObject = require "model.GameObject"
 
 -- Package definition
-local GameObject = class("GameObject")
+local AnimatedGameObject = GameObject:extend("AnimatedGameObject")
 
 -- Default constructor.
 -- @parent Parent display group this object belong to.
-function GameObject:init(parent)
-  self.parent = parent
+function AnimatedGameObject:init(parent)
+  GameObject.super.init(self, parent)
 end
 
 -- Package export
-return GameObject
+return AnimatedGameObject
