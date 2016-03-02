@@ -15,10 +15,11 @@ local GameObject = require "core.GameObject"
 local SceneLayer = class("SceneLayer")
 
 -- Default constructor
-function SceneLayer:init()
+-- @param container Scene display group container this layer is bound to.
+function SceneLayer:init(container)
+  self.container = container
   self.objects = {}
 end
-
 
 -- Adds the given object to this layer.
 -- @param object The object to add.
@@ -26,6 +27,7 @@ function SceneLayer:add(object)
   if not(object.class:extends(GameObject)) then
     error("SceneLayer could only handle GameObject instance")
   end
+  -- Consider setting group here.
   insert(self.objects, object)
 end
 

@@ -13,7 +13,7 @@ local Grass = StaticGameObject:extends("Grass")
 local RESOURCE = "resources/assets/grass.png"
 
 -- Default constructor.
--- @parent Parent display group this object belong to.
+-- @parent Parent SceneLayer this object belong to.
 function Grass:init(parent)
   StaticGameObject.super.init(self, parent, RESOURCE)
 end

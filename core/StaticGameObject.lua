@@ -15,7 +15,7 @@ local StaticGameObject = GameObject:extend("StaticGameObject")
 -- @parent Parent display group this object belong to.
 function StaticGameObject:init(parent, path)
   GameObject.super.init(self, parent)
-  self.image = display.display.newImage(self.parent, path)
+  self.image = display.newImage(self.parent, path)
 end
 
 -- Package export

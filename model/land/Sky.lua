@@ -1,22 +1,22 @@
 ----------------------------------------------------
--- Cloud object defintion.
+-- Sky object defintion.
 -- @package model.land
 -- @author Faylixe
 ----------------------------------------------------
 
 -- Dependencies import
 local class = require "core.30log"
-local StaticGameObject = require "core.StaticGameObject"
+local GameObject = require "core.GameObject"
 
 -- Package definition
-local Cloud = StaticGameObject:extends("Cloud")
-local RESOURCE = "resources/assets/cloud.png"
+local Sky = GameObject:extends("Sky")
 
 -- Default constructor.
 -- @parent Parent SceneLayer this object belong to.
-function Cloud:init(parent)
-  StaticGameObject.super.init(self, parent, RESOURCE)
+function Sky:init(parent)
+  GameObject.super.init(self, parent)
+  self.clouds = {}
 end
 
 -- Package export
-return Cloud
+return Sky

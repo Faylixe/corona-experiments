@@ -14,6 +14,7 @@ local GameObject = class("GameObject")
 -- @parent Parent display group this object belong to.
 function GameObject:init(parent)
   self.parent = parent
+  self.parent:add(self)
 end
 
 -- Package export
