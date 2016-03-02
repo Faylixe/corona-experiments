@@ -12,7 +12,10 @@ local SceneBuilder = require "scene.SceneBuilder"
 
 -- Create scene
 local builder = SceneBuilder()
+
+-- Create sky layer.
 local sky = builder:createLayer()
 local cloud = Cloud(sky)
 sky.add(cloud)
+
 return builder:build()
