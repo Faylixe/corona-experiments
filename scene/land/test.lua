@@ -18,6 +18,8 @@ local builder = SceneBuilder()
 local skyFactory = function(container)
   local layer = SceneLayer(container)
   local sky = Sky(layer)
+  sky:addCloud(50, -2)
+  sky:addCloud(75, -4)
   return layer
 end
 

@@ -18,13 +18,16 @@ local SceneBuilder = class("SceneBuilder")
 -- Default constructor.
 function SceneBuilder:init()
   self.factories = {}
+  self.layers = {}
   self.scene = composer.newScene()
   -- Delegate scene creation method definition
   -- @param scene Scene instance this method belongs to.
   -- @param event Creation event that trigerred this method call.
   self.scene.create = function(scene, event)
     for _, factory in ipairs(self.factories) do
-      factory(scene.view)
+      local layer = factory(scene.view)
+      insert(self.layers, layer)
+      layer:addListener("enterFrame", function(event) layer:update(event) end)
     end
   end
   -- Delegate scene showing method definition
@@ -41,6 +44,11 @@ function SceneBuilder:init()
   -- @param scene Scene instance this method belongs to.
   -- @param event Destruction event that trigerred this method call.
   self.scene.destroy = function(scene, event)
+    for key, layer in ipairs(self.layers) do
+      layer:removeListeners()
+      self.layers[key] = nil
+    end
+    self.layers = nil
   end
 
 end
