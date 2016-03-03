@@ -5,7 +5,7 @@
 
 -- Dependencies import
 local composer = require "composer"
-local Logger = require "core.log4l"
+local Logger = require "core.log.Logger"
 
 -- Initiliazes logger (for development).
 local log = Logger("Main")

@@ -5,7 +5,7 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local Logger = require "core.log4l"
+local Logger = require "core.log.Logger"
 local SceneLayer = require "scene.SceneLayer"
 local SceneBuilder = require "scene.SceneBuilder"
 local GroupGameObject = require "core.GroupGameObject"

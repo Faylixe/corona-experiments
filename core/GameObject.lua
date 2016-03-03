@@ -5,7 +5,7 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local class = require "core.30log"
+local class = require "core.lang.30log"
 
 -- Package definition
 local GameObject = class("GameObject")

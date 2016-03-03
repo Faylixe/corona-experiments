@@ -9,7 +9,7 @@ local insert = table.insert
 
 -- Dependencies import
 local composer = require "composer"
-local class = require "core.30log"
+local class = require "core.lang.30log"
 local SceneLayer = require "scene.SceneLayer"
 
 -- Package definition

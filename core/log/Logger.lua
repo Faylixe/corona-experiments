@@ -1,46 +1,18 @@
 ----------------------------------------------------
 -- Logging utils for development purpose.
--- @package core
+-- @package core.log
 -- @author Faylixe
 ----------------------------------------------------
 
--- Dependencies import
-local class = require "core.30log"
+-- Static import
 local max = math.max
-local stop = '\27[0m'
 
--- Boldify the given label.
--- @param Label to boldify.
--- @return Boldified label.
-local function bold(label)
-  return '\27[1m' .. label .. stop
-end
-
--- Redify the given label.
--- @param Label to redify.
--- @return Redified label.
-local function red(label)
-  return '\27[31m' .. label .. stop
-end
-
-
--- Enumeration of all logging level.
-local Level = {
-  ERROR = 1,
-  WARN = 2,
-  INFO = 3,
-  DEBUG = 4,
-}
-
-local levels = {
-  info = bold("INFO "),
-  warn = bold("WARN "),
-  debug = bold("DEBUG"),
-  error = bold("ERROR"),
-}
+-- Dependencies import
+local Class = require "core.lang.30log"
+local Level = require "core.log.Level"
 
 -- Package definition
-local Logger = class("Logger")
+local Logger = Class("core.log.Logger")
 
 -- The header overflow property allows to align the gap between header and message.
 Logger.headerOverflow = 0
@@ -75,33 +47,37 @@ function Logger:createGap()
   return gap
 end
 
+--
+-- @param level
+-- @param message
+function Logger:log(level, message)
+  if (level.priority <= Logger.level.priority) then
+    print(level.header .. " " .. level:format(self.header .. self:createGap() .. tostring(message)))
+  end
+end
+
 -- Logs the given exception using the ERROR level.
 -- @param exception Caught exception to display.
 function Logger:error(exception)
-  print(red(levels.error) .. " " .. red(self.header .. self:createGap() .. tostring(exception)))
+  self:log(Level.ERROR, exception)
 end
 
 -- Logs the given message with the WARN level.
--- @param message Warning message to display.
-function Logger:warn(message)
-  print(red(levels.warn) .. " " .. red(self.header .. self:createGap() .. tostring(exception)))
+-- @param warning Warning message to display.
+function Logger:warn(warning)
+  self:log(Level.WARN, warning)
 end
 
 -- Logs the given message with the INFO level.
 -- @param message Information message to display.
 function Logger:info(message)
-  if (Logger.level >= Level.INFO) then
-    print(levels.info .. " " .. self.header .. self:createGap() .. tostring(message))
-  end
+  self:log(Level.INFO, message)
 end
-
 
 -- Logs the given message with the DEBUG level.
 -- @param message Debug message to display.
 function Logger:debug(message)
-  if (Logger.level >= Level.DEBUG) then
-    print(levels.debug .. " " .. self.header .. self:createGap() .. tostring(message))
-  end
+  self:log(Level.DEBUG, message)
 end
 
 -- Package export

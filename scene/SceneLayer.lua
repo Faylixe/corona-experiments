@@ -8,8 +8,8 @@
 local insert = table.insert
 
 -- Dependencies import
-local class = require "core.30log"
-local Logger = require "core.log4l"
+local class = require "core.lang.30log"
+local Logger = require "core.log.Logger"
 local GameObject = require "core.GameObject"
 
 -- Package definition
