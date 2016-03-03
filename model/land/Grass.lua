@@ -9,12 +9,15 @@ local StaticGameObject = require "model.StaticGameObject"
 
 -- Package definition
 local Grass = StaticGameObject:extend("Grass")
-local RESOURCE = "resources/assets/grass.png"
+local RESOURCE = "resources/assets/land/grass.png"
 
 -- Default constructor.
 -- @parent Parent SceneLayer this object belong to.
-function Grass:init(parent)
-  Grass.super.init(self, parent, RESOURCE)
+function Grass:init(parent, x, y)
+  Grass.super.init(self, RESOURCE)
+  local image = self.image
+  image.x = x
+  image.y = y
 end
 
 -- Package export

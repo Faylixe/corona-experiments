@@ -10,6 +10,7 @@ local SceneLayer = require "scene.SceneLayer"
 local SceneBuilder = require "scene.SceneBuilder"
 local GroupGameObject = require "model.GroupGameObject"
 local Cloud = require "model.land.cloud"
+local Grass = require "model.land.Grass"
 
 -- Create scene
 local log = Logger("scene.land.Test")
@@ -19,15 +20,32 @@ local builder = SceneBuilder()
 -- @param group Display group container of the parent scene.
 local skyFactory = function(group)
   local layer = SceneLayer(group)
+  local background = display.newRect(group, display.contentWidth / 2, display.contentHeight / 2, display.contentWidth * 2, display.contentHeight)
+  background.fill = {
+    type = "gradient",
+    color1 = {0, 0, 1},
+    color2 = {1, 1, 1},
+    direction = "down"
+  }
   local sky = GroupGameObject()
-  log:debug("Adding 2 clouds")
   sky:add(Cloud(50, -2))
   sky:add(Cloud(80, -3))
   layer:add(sky)
   return layer
 end
 
+-- Factory function for Grass.
+-- @param group Display group container of the parent scene.
+local grassFactory = function(group)
+  local layer = SceneLayer(group)
+  for n = 0, 9 do
+    layer:add(Grass(nil, n * 90, display.contentHeight - 10))
+  end
+  return layer
+end
+
 -- Fill builder with created factories.
 builder:addLayerFactory(skyFactory)
+builder:addLayerFactory(grassFactory)
 
 return builder:build()
