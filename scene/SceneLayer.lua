@@ -8,12 +8,12 @@
 local insert = table.insert
 
 -- Dependencies import
-local class = require "core.lang.30log"
+local Class = require "core.lang.30log"
 local Logger = require "core.log.Logger"
-local GameObject = require "core.GameObject"
+local GameObject = require "model.GameObject"
 
 -- Package definition
-local SceneLayer = class("SceneLayer")
+local SceneLayer = Class("scene.SceneLayer")
 
 -- Class logger
 local log = Logger(SceneLayer)
@@ -58,7 +58,8 @@ function SceneLayer:add(object)
   if not(object.class:extends(GameObject)) then
     error("SceneLayer could only handle GameObject instance")
   end
-  log:info(object)
+  log:debug("Object class : " .. object.class.name)
+  log:debug("Object display instance : " .. tostring(object:getDisplayInstance()))
   insert(self.objects, object)
   self.group:insert(object:getDisplayInstance())
 end

@@ -5,7 +5,7 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local GameObject = require "core.GameObject"
+local GameObject = require "model.GameObject"
 
 -- Package definition
 local AnimatedGameObject = GameObject:extend("AnimatedGameObject")

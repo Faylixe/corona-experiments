@@ -7,23 +7,26 @@
 local insert = table.insert
 
 -- Dependencies import
-local GameObject = require "core.GameObject"
+local Logger = require "core.log.Logger"
+local GameObject = require "model.GameObject"
 
 -- Package definition
-local GroupGameObject = GameObject:extend("GroupGameObject")
+local GroupGameObject = GameObject:extend("core.GroupGameObject")
+
+local log = Logger(GroupGameObject)
 
 -- Default constructor.
--- @parent Parent SceneLayer this object belong to.
-function GroupGameObject:init(parent)
-  GroupGameObject.super.init(self, parent)
+function GroupGameObject:init()
   self.group = display.newGroup()
   self.childs = {}
+  GroupGameObject.super.init(self)
 end
 
 --
 -- @param object
 function GroupGameObject:add(object)
   insert(self.childs, object)
+  log:debug("Object display : " .. tostring(object:getDisplayInstance()))
   self.group:insert(object:getDisplayInstance())
 end
 

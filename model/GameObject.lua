@@ -5,16 +5,14 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local class = require "core.lang.30log"
+local Class = require "core.lang.30log"
 
 -- Package definition
-local GameObject = class("GameObject")
+local GameObject = Class("GameObject")
 
 -- Default constructor.
--- @parent Parent display group this object belong to.
-function GameObject:init(parent)
-  self.parent = parent
-  self.parent:add(self)
+function GameObject:init()
+  -- Do nothing here.
 end
 
 -- Method that aims to be overriden. This method

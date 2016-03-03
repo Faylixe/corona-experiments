@@ -5,17 +5,22 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local GameObject = require "core.GameObject"
+local Logger = require "core.log.Logger"
+local GameObject = require "model.GameObject"
 
 -- Package definition
 local StaticGameObject = GameObject:extend("StaticGameObject")
+local log = Logger(StaticGameObject)
 
 -- Default constructor.
 -- @parent Parent display group this object belong to.
-function StaticGameObject:init(parent, path)
-  StaticGameObject.super.init(self, parent)
-  print("Loading static image " .. path)
+function StaticGameObject:init(path)
+  StaticGameObject.super.init(self)
+  log:info("Loading static image " .. path)
   self.image = display.newImage(path)
+  if self.image == nil then
+    error(path .. " image not found")
+  end
 end
 
 -- Static image getter.

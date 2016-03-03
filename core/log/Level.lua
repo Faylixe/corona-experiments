@@ -48,7 +48,7 @@ end
 -- Package export
 return setmetatable(Level, { __index = {
   ERROR = Level(0, "ERROR", Level.createColorFormatter(31)),
-  WARN = Level(1, "WARN"),
-  INFO = Level(2, "INFO"),
+  WARN = Level(1, "WARN "),
+  INFO = Level(2, "INFO "),
   DEBUG = Level(3, "DEBUG")
 }})

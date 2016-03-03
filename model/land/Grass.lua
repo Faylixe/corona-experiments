@@ -5,7 +5,7 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local StaticGameObject = require "core.StaticGameObject"
+local StaticGameObject = require "model.StaticGameObject"
 
 -- Package definition
 local Grass = StaticGameObject:extend("Grass")

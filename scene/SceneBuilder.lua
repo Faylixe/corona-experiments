@@ -8,18 +8,20 @@
 local insert = table.insert
 
 -- Dependencies import
-local composer = require "composer"
-local class = require "core.lang.30log"
+local Composer = require "composer"
+local Class = require "core.lang.30log"
+local Logger = require "core.log.Logger"
 local SceneLayer = require "scene.SceneLayer"
 
 -- Package definition
-local SceneBuilder = class("SceneBuilder")
+local SceneBuilder = Class("scene.SceneBuilder")
+local log = Logger(SceneBuilder)
 
 -- Default constructor.
 function SceneBuilder:init()
   self.factories = {}
   self.layers = {}
-  self.scene = composer.newScene()
+  self.scene = Composer.newScene()
   -- Delegate scene creation method definition
   -- @param scene Scene instance this method belongs to.
   -- @param event Creation event that trigerred this method call.
