@@ -15,6 +15,7 @@ local GameObject = require "core.GameObject"
 -- Package definition
 local SceneLayer = class("SceneLayer")
 
+-- Class logger
 local log = Logger(SceneLayer)
 
 -- Default constructor

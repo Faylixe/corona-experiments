@@ -21,7 +21,7 @@ local skyFactory = function(group)
   local layer = SceneLayer(group)
   log:info("Creating sky")
   local sky = GroupGameObject(layer)
-  log:info("Adding cloud")
+  log:info("Adding 2 clouds")
   sky:add(Cloud(50, -2))
   sky:add(Cloud(75, -4))
   return layer
