@@ -9,7 +9,7 @@ local insert = table.insert
 
 -- Dependencies import
 local composer = require "composer"
-local class = require "core.30log "
+local class = require "core.30log"
 local SceneLayer = require "scene.SceneLayer"
 
 -- Package definition
@@ -62,7 +62,7 @@ end
 
 -- Builds a scene instance, after binding event listener methods.
 -- @return Built scene instance.
-function SceneBuilder:builder()
+function SceneBuilder:build()
   local scene = self.scene
   scene:addEventListener("create", scene)
   scene:addEventListener("show", scene)

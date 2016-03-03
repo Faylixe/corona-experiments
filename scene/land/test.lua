@@ -5,21 +5,25 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local class = require "30log"
-local Sky = require "model.land.Sky"
+local Logger = require "core.log4l"
 local SceneLayer = require "scene.SceneLayer"
 local SceneBuilder = require "scene.SceneBuilder"
+local GroupGameObject = require "core.GroupGameObject"
+local Cloud = require "model.land.cloud"
 
 -- Create scene
+local log = Logger("Scene:land.test")
 local builder = SceneBuilder()
 
 -- Factory function for Sky layer.
--- @param container Display group container of the parent scene.
-local skyFactory = function(container)
-  local layer = SceneLayer(container)
-  local sky = Sky(layer)
-  sky:addCloud(50, -2)
-  sky:addCloud(75, -4)
+-- @param group Display group container of the parent scene.
+local skyFactory = function(group)
+  local layer = SceneLayer(group)
+  log:info("Creating sky")
+  local sky = GroupGameObject(layer)
+  log:info("Adding cloud")
+  sky:add(Cloud(50, -2))
+  sky:add(Cloud(75, -4))
   return layer
 end
 

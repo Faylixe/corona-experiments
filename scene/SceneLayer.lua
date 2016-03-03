@@ -8,16 +8,19 @@
 local insert = table.insert
 
 -- Dependencies import
-local class = require "30log"
+local class = require "core.30log"
+local Logger = require "core.log4l"
 local GameObject = require "core.GameObject"
 
 -- Package definition
 local SceneLayer = class("SceneLayer")
 
+local log = Logger(SceneLayer)
+
 -- Default constructor
--- @param container Scene display group container this layer is bound to.
-function SceneLayer:init(container)
-  self.container = container
+-- @param group Scene display group container this layer is bound to.
+function SceneLayer:init(group)
+  self.group = group
   self.objects = {}
   self.listeners = {}
 end
@@ -54,7 +57,9 @@ function SceneLayer:add(object)
   if not(object.class:extends(GameObject)) then
     error("SceneLayer could only handle GameObject instance")
   end
+  log:info(object)
   insert(self.objects, object)
+  self.group:insert(object:getDisplayInstance())
 end
 
 -- Package export

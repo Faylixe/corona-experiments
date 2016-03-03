@@ -5,11 +5,10 @@
 ----------------------------------------------------
 
 -- Dependencies import
-local class = require "core.30log"
 local StaticGameObject = require "core.StaticGameObject"
 
 -- Package definition
-local Cloud = StaticGameObject:extends("Cloud")
+local Cloud = StaticGameObject:extend("Cloud")
 local RESOURCE = "resources/assets/cloud.png"
 
 -- Default constructor.
@@ -17,7 +16,7 @@ local RESOURCE = "resources/assets/cloud.png"
 -- @param y
 -- @param speed Integer which acts as the horizontal delta scrolling speed.
 function Cloud:init(parent, y, speed)
-  StaticGameObject.super.init(self, parent, RESOURCE)
+  Cloud.super.init(self, parent, RESOURCE)
   self.speed = speed
 end
 

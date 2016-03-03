@@ -17,11 +17,17 @@ function GameObject:init(parent)
   self.parent:add(self)
 end
 
--- Abstract method that aims to be overriden. This method
+-- Method that aims to be overriden. This method
 -- is bind as an "enterFrame" event listener.
 -- @param event Event that trigerred this method call.
 function GameObject:update(event)
   -- Do nothing here.
+end
+
+-- Abstract display getter that aims to be overriden.
+-- @return A display object instance that represents this game object.
+function GameObject:getDisplayInstance()
+  error("getDisplayInstance() should be overriden")
 end
 
 -- Package export
