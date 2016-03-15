@@ -18,6 +18,7 @@ function Grass:init(parent, x, y)
   local image = self.image
   image.x = x
   image.y = y
+  image.anchorY = 1
 end
 
 -- Package export

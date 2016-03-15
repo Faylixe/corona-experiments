@@ -7,11 +7,16 @@
 -- Static import
 local insert = table.insert
 
+-- Consider moving those default parameters.
+display.setDefault("anchorX", 0.0)
+display.setDefault("anchorY", 0.0)
+
 -- Dependencies import
 local Composer = require "composer"
 local Class = require "core.lang.30log"
 local Logger = require "core.log.Logger"
 local SceneLayer = require "scene.SceneLayer"
+local GameController = require "controller.GameController"
 
 -- Package definition
 local SceneBuilder = Class("scene.SceneBuilder")
@@ -26,8 +31,14 @@ function SceneBuilder:init()
   -- @param scene Scene instance this method belongs to.
   -- @param event Creation event that trigerred this method call.
   self.scene.create = function(scene, event)
+    -- Binds game controller.
+     -- TODO : Check out why scene starting point is not 0 ?
+    local view = scene.view
+    local controller = GameController.getInstance()
+    controller:setTargetView(view)
+    -- Initializes scene layers.
     for _, factory in ipairs(self.factories) do
-      local layer = factory(scene.view)
+      local layer = factory(view)
       insert(self.layers, layer)
       layer:addListener("enterFrame", function(event) layer:update(event) end)
     end

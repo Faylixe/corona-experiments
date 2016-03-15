@@ -20,7 +20,7 @@ local builder = SceneBuilder()
 -- @param group Display group container of the parent scene.
 local skyFactory = function(group)
   local layer = SceneLayer(group)
-  local background = display.newRect(group, display.contentWidth / 2, display.contentHeight / 2, display.contentWidth * 2, display.contentHeight)
+  local background = display.newRect(group, 0, 0, display.actualContentWidth, display.actualContentHeight)
   background.fill = {
     type = "gradient",
     color1 = {0, 0, 1},
@@ -39,7 +39,7 @@ end
 local grassFactory = function(group)
   local layer = SceneLayer(group)
   for n = 0, 9 do
-    layer:add(Grass(nil, n * 90, display.contentHeight - 10))
+    layer:add(Grass(nil, n * 90, display.contentHeight))
   end
   return layer
 end

@@ -58,8 +58,6 @@ function SceneLayer:add(object)
   if not(object.class:extends(GameObject)) then
     error("SceneLayer could only handle GameObject instance")
   end
-  log:debug("Object class : " .. object.class.name)
-  log:debug("Object display instance : " .. tostring(object:getDisplayInstance()))
   insert(self.objects, object)
   self.group:insert(object:getDisplayInstance())
 end
